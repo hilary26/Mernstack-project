@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import Registration from "./Authentication/signup/signup-component";
+import Login from "./Authentication/login/login-component";
+import Homepage from "./page/Home/home-component";
+import Walmart from "./page/layout/walmart-component";
+import Product from "./page/Product/product-component";
+import Advertisment from "./page/Advertisment/ads-component";
+import {Route, Routes } from 'react-router-dom';
+import { AuthProvider } from "./Authentication/context/authContext";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AuthProvider>
+      <Routes>
+        <Route path="/registration" element={<Registration /> } />
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/walmart" element={<Walmart />} />
+        <Route path="/Advertisment" element={<Advertisment />} />
+        <Route path="/Product" element={<Product />} />
+      </Routes>
+      </AuthProvider>
     </div>
   );
 }
